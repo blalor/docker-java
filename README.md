@@ -19,5 +19,5 @@ your Graphite installation:
 
 * graphite.host -- defaults to `localhost`
 * graphite.port -- defaults to `2003`
-* graphite.prefix -- defaults to `DEFAULT_PREFIX.`; something like `servers.<host>.<app>.` might be a good idea
+* jmxtrans.graphite.prefix -- defaults to `DEFAULT_PREFIX.`; something like `servers.<host>.<app>.` might be a good idea
 

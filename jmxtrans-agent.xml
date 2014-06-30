@@ -23,7 +23,7 @@
     <outputWriter class="org.jmxtrans.agent.GraphitePlainTextTcpOutputWriter">
         <host>${graphite.host:localhost}</host>
         <port>${graphite.port:2003}</port>
-        <namePrefix>${graphite.prefix:DEFAULT_PREFIX.}</namePrefix>
+        <namePrefix>${jmxtrans.graphite.prefix:DEFAULT_PREFIX.}</namePrefix>
     </outputWriter>
     
     <collectIntervalInSeconds>10</collectIntervalInSeconds>
