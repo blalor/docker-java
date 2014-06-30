@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmxtrans-agent>
+    <queries>
+        <!-- JVM -->
+        <query objectName="java.lang:type=Memory" attribute="HeapMemoryUsage"    key="used"      resultAlias="heapMemoryUsage.used" />
+        <query objectName="java.lang:type=Memory" attribute="HeapMemoryUsage"    key="max"       resultAlias="heapMemoryUsage.max" />
+        <query objectName="java.lang:type=Memory" attribute="HeapMemoryUsage"    key="committed" resultAlias="heapMemoryUsage.committed" />
+        
+        <query objectName="java.lang:type=Memory" attribute="NonHeapMemoryUsage" key="used"      resultAlias="nonHeapMemoryUsage.used" />
+        <query objectName="java.lang:type=Memory" attribute="NonHeapMemoryUsage" key="max"       resultAlias="nonHeapMemoryUsage.max" />
+        <query objectName="java.lang:type=Memory" attribute="NonHeapMemoryUsage" key="committed" resultAlias="nonHeapMemoryUsage.committed" />
+        
+        <query objectName="java.lang:name=MarkSweepCompact,type=GarbageCollector" attribute="CollectionCount" resultAlias="gc.marksweepconcat.count" />
+        <query objectName="java.lang:name=MarkSweepCompact,type=GarbageCollector" attribute="CollectionTime"  resultAlias="gc.marksweepconcat.time" />
+        
+        <query objectName="java.lang:name=Copy,type=GarbageCollector"             attribute="CollectionCount" resultAlias="gc.copy.count" />
+        <query objectName="java.lang:name=Copy,type=GarbageCollector"             attribute="CollectionTime"  resultAlias="gc.copy.time" />
+        
+        <query objectName="java.lang:type=ClassLoading" attribute="LoadedClassCount" resultAlias="loadedClasses" />
+        <query objectName="java.lang:type=Threading"    attribute="ThreadCount"      resultAlias="thread" />
+    </queries>
+    
+    <outputWriter class="org.jmxtrans.agent.GraphitePlainTextTcpOutputWriter">
+        <host>${graphite.host:localhost}</host>
+        <port>${graphite.port:2003}</port>
+        <namePrefix>${graphite.prefix:DEFAULT_PREFIX.}</namePrefix>
+    </outputWriter>
+    
+    <collectIntervalInSeconds>10</collectIntervalInSeconds>
+</jmxtrans-agent>
